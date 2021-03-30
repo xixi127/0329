@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>查询大学</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app" style="text-align: center;">
+			请输入查询的大学：<input type="text"v-model="s" />
+			<input type="button" value="查询" @click="select" />
+			<p>{{msg}}</p>
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data() {
+					return {
+						school:[
+							{
+								name:'北京大学',
+								no:985
+							},
+							{
+								name:'清华大学',
+								no:985
+							},
+							{
+								name:'苏州大学',
+								no:211
+							},
+							{
+								name:'广西大学',
+								no:211
+							},
+							{
+								name:'上海交通大学大学',
+								no:985
+							}
+						],
+						s:'',
+						msg: ''
+					}
+				},
+				methods: {
+					select() {
+						for (let i = 0; i < this.school.length; i++) {
+							if(this.s == this.school[i].name){
+								this.msg =this.school[i].name+'是'+this.school[i].no
+								break
+							}else{
+								this.msg = '请输入正确的大学名称'
+							}
+						}
+					}
+				},
+			})
+		</script>
+	</body>
+</html>
